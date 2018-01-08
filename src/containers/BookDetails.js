@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-function BookDetail ({book}) {
+const BookDetail = ({book}) => {
   if (!book) {
     return <div>Select a book to get started</div>
   }
@@ -14,10 +14,6 @@ function BookDetail ({book}) {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    book: state.activeBook
-  }
-}
+const mapStateToProps = ({activeBook}) => ({ book: activeBook })
 
 export default connect(mapStateToProps)(BookDetail)

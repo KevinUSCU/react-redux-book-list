@@ -23,8 +23,8 @@ const BookList = ({ books, activeBook, selectBook }) => (
   </ul>
 )
 
-const mapStateToProps = ({books, activeBook}) => { return { books, activeBook } }
+const mapStateToProps = ({books, activeBook}) => ({ books, activeBook })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({selectBook: selectBook}, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ selectBook }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList)
