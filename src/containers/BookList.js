@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { selectBook } from '../actions/index'
 import { bindActionCreators } from 'redux'
 
-class BookList extends Component {
-  renderBook (book, index) {
-    const { activeBook, selectBook } = this.props
+const createBookRender = (activeBook, selectBook) =>
+  (book, index) => {
     const active = activeBook && activeBook.id === book.id ? 'active' : ''
 
     return (
@@ -18,18 +17,13 @@ class BookList extends Component {
     )
   }
 
-  render () {
-    const { books } = this.props
-
-    return (
-      <ul className='list-group col-sm-4'>
-        {
-          books.map(this.renderBook.bind(this))
-        }
-      </ul>
-    )
-  }
-}
+const BookList = ({ books, activeBook, selectBook }) => (
+  <ul className='list-group col-sm-4'>
+    {
+      books.map(createBookRender(activeBook, selectBook))
+    }
+  </ul>
+)
 
 function mapStateToProps (state) {
   return {
