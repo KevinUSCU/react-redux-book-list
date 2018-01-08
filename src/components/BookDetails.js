@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 function BookDetail ({ book }) {
   if (!book) {
@@ -14,4 +15,6 @@ function BookDetail ({ book }) {
   )
 }
 
-export default BookDetail
+const mapStateToProps = (state) => ({ book: state.activeBook })
+
+export default connect(mapStateToProps)(BookDetail)

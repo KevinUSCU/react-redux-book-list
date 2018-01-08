@@ -28,10 +28,10 @@ function createBookRender (activeBook, handleSelectBook) {
   }
 }
 
-const mapStateToProps = (state) => ({ books: state.books })
+const mapStateToProps = (state) => ({ books: state.books, activeBook: state.activeBook })
 
 const mapDispatchToProps = (dispatch) => {
-  bindActionCreators({ handleSelectBook: selectBook }, dispatch)
+  return bindActionCreators({ handleSelectBook: selectBook }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList)
