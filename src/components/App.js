@@ -26,10 +26,7 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <BookList
-          books={this.state.books}
-          activeBook={this.state.activeBook}
-          handleSelectBook={this.selectBook} />
+        <BookList />
         <BookDetail
           book={this.state.activeBook} />
       </div>

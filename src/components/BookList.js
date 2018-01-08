@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { selectBook } from '../actions'
 
-export default function ({books, activeBook, handleSelectBook}) {
+export function BookList ({books, activeBook, handleSelectBook}) {
   return (
     <ul className='list-group col-sm-4'>
       {
@@ -24,3 +27,11 @@ function createBookRender (activeBook, handleSelectBook) {
     )
   }
 }
+
+const mapStateToProps = (state) => ({ books: state.books })
+
+const mapDispatchToProps = (dispatch) => {
+  bindActionCreators({ handleSelectBook: selectBook }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList)
