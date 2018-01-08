@@ -19,21 +19,12 @@ const createBookRender = (activeBook, selectBook) =>
 
 const BookList = ({ books, activeBook, selectBook }) => (
   <ul className='list-group col-sm-4'>
-    {
-      books.map(createBookRender(activeBook, selectBook))
-    }
+    { books.map(createBookRender(activeBook, selectBook)) }
   </ul>
 )
 
-function mapStateToProps (state) {
-  return {
-    books: state.books,
-    activeBook: state.activeBook
-  }
-}
+const mapStateToProps = ({books, activeBook}) => { return { books, activeBook } }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({selectBook: selectBook}, dispatch)
-}
+const mapDispatchToProps = (dispatch) => bindActionCreators({selectBook: selectBook}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList)
